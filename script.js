@@ -42,26 +42,30 @@ const operator = {
             }
         }, 1000);
     },
-    "numberCounterDisplay" : model.counterDisplay.textContent,
 
     "startCounting" : function() {
         operator.counter++;
-        console.log(operator.counter);
         view.showCounter();
     },
     "checkFizz" : function() {
         if (this.counter % 3 === 0) {
             console.log("Fizz");
+            operator.score++;
+            view.showScore();
         }
     },
     "checkBuzz" : function() {
         if (this.counter % 5 === 0) {
             console.log("Buzz");
+            operator.score++;
+            view.showScore();
         }
     },
     "checkFizzBuzz" : function() {
         if (this.counter % 3 === 0 && this.counter % 5 === 0) {
             console.log("FizzBuzz");
+            operator.score++;
+            view.showScore();
         }
     },
 
@@ -76,11 +80,10 @@ const view = {
     "showCounter" : function() {
         const counter = operator.getCounterDisplay();
         counter.textContent = operator.counter;
-        // operator.startCounting();
     },
     "showScore" : function() {
-        const score = operator.getScoreDisplay();
-        score.textContent = operator.score;
+        const scoreDisplay = operator.getScoreDisplay();
+        scoreDisplay.textContent = operator.score;
     },
     "eventListeners" : function() {
         const btnStart = operator.getBtnStart();
