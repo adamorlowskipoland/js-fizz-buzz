@@ -4,6 +4,7 @@ const model = {
     "btnBuzz" : document.getElementById('btn-buzz'),
     "btnFizzBuzz" : document.getElementById('btn-fizzbuzz'),
     "counterDisplay" : document.getElementById('counter'),
+    "scoreDisplay" : document.getElementById('score'),
 }
 
 const operator = {
@@ -22,7 +23,11 @@ const operator = {
     "getCounterDisplay" : function() {
         return model.counterDisplay;        
     },
+    "getScoreDisplay" : function() {
+        return model.scoreDisplay;
+    },
     "counter" : 0,
+    "score" : 0,
     "interval" : 0,
 
     "startInterval" : function() {
@@ -35,7 +40,7 @@ const operator = {
             } else {
                 clearInterval(operator.interval);
             }
-        }, 100);
+        }, 1000);
     },
 
     "startCounting" : function() {
@@ -46,11 +51,17 @@ const operator = {
 
 const view = {
     "initDisplay" : function() {
+        this.showCounter();
+        this.showScore();
         this.eventListeners();
     },
     "showCounter" : function() {
         const counter = operator.getCounterDisplay();
         counter.textContent = operator.counter;
+    },
+    "showScore" : function() {
+        const score = operator.getScoreDisplay();
+        score.textContent = operator.score;
     },
     "eventListeners" : function() {
         const btnStart = operator.getBtnStart();
