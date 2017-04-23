@@ -62,7 +62,7 @@ const operator = {
         }
     },
     "checkFizzBuzz" : function() {
-        if (this.counter % 3 === 0 && this.counter % 5 === 0) {
+        if (this.counter % 15 === 0) {
             console.log("FizzBuzz");
             operator.score++;
             view.showScore();
