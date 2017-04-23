@@ -36,17 +36,35 @@ const operator = {
         this.interval = setInterval(function() {
             if (operator.counter < 100) {
                 operator.startCounting();
-                view.showCounter();
+                // view.showCounter();
             } else {
                 clearInterval(operator.interval);
             }
         }, 1000);
     },
+    "numberCounterDisplay" : model.counterDisplay.textContent,
 
     "startCounting" : function() {
         operator.counter++;
         console.log(operator.counter);
-    }
+        view.showCounter();
+    },
+    "checkFizz" : function() {
+        if (this.counter % 3 === 0) {
+            console.log("Fizz");
+        }
+    },
+    "checkBuzz" : function() {
+        if (this.counter % 5 === 0) {
+            console.log("Buzz");
+        }
+    },
+    "checkFizzBuzz" : function() {
+        if (this.counter % 3 === 0 && this.counter % 5 === 0) {
+            console.log("FizzBuzz");
+        }
+    },
+
 }
 
 const view = {
@@ -58,6 +76,7 @@ const view = {
     "showCounter" : function() {
         const counter = operator.getCounterDisplay();
         counter.textContent = operator.counter;
+        // operator.startCounting();
     },
     "showScore" : function() {
         const score = operator.getScoreDisplay();
@@ -66,19 +85,22 @@ const view = {
     "eventListeners" : function() {
         const btnStart = operator.getBtnStart();
         btnStart.addEventListener('click', function(){
-            operator.startInterval();       
+            operator.startInterval();
+            view.btnsEventListeners();     
         });
+    },
+    "btnsEventListeners" : function() {
         const btnFizz = operator.getBtnFizz();
         btnFizz.addEventListener('click', function(){
-            console.log(this);        
+            operator.checkFizz();       
         });
         const btnBuzz = operator.getBtnBuzz();
         btnBuzz.addEventListener('click', function(){
-            console.log(this);        
+            operator.checkBuzz();     
         });
         const btnFizzBuzz = operator.getBtnFizzBuzz();
         btnFizzBuzz.addEventListener('click', function(){
-            console.log(this);        
+            operator.checkFizzBuzz();     
         });
     }
 }
